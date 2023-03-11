@@ -2,6 +2,14 @@
 
 dwm is an extremely fast, small, and dynamic window manager for X.
 
+This is my personal fork of dwm. Patches I've applied are in the patches
+directory. I've also moved around a lot of the files to make things more
+organized. Maybe that was unnecessary, but I think it makes the repository
+easier to navigate.
+
+Also, I've included a dwm.desktop file that gets installed into
+/usr/share/xsessions so you can launch dwm from your display manager.
+
 ## Requirements
 
 In order to build dwm you need the Xlib header files.
@@ -14,7 +22,7 @@ the /usr/local namespace by default).
 Afterwards enter the following command to build and install dwm (if
 necessary as root):
 
-```
+```bash
 make clean install
 ```
 
@@ -22,14 +30,14 @@ make clean install
 
 Add the following line to your .xinitrc to start dwm using startx:
 
-```
+```bash
 exec dwm
 ```
 
 In order to connect dwm to a specific display, make sure that
 the DISPLAY environment variable is set correctly, e.g.:
 
-```
+```bash
 DISPLAY=foo.bar:1 exec dwm
 ```
 
