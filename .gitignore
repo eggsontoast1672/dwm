@@ -1,0 +1,7 @@
+# Binary
+dwm
+
+# Object files
+drw.o
+dwm.o
+util.o
