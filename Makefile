@@ -32,21 +32,29 @@ clean:
 
 dist: clean
 	mkdir -p dwm-${VERSION}
-	cp -R LICENSE Makefile README.md ${SRCDIR} config.mk dwm.1 dwm.png dwm-${VERSION}
+	cp -R LICENSE Makefile README.md ${SRCDIR} config.mk dwm.1 dwm.png \
+		dwm.desktop dwm-${VERSION}
 	rm dwm-${VERSION}/${SRCDIR}/config.h
 	tar -cf dwm-${VERSION}.tar dwm-${VERSION}
 	gzip dwm-${VERSION}.tar
 	rm -rf dwm-${VERSION}
 
 install: all
+	# bin
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
+	# man
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	# xsession
+	mkdir -p ${DESTDIR}${PREFIX}/xsessions
+	cp -f dwm.desktop ${DESTDIR}${PREFIX}/xsessions
+	chmod 644 ${DESTDIR}${PREFIX}/xsessions/dwm.desktop
 
 uninstall:
-	rm -f ${DESTDIR}${PREFIX}/bin/dwm ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	rm -f ${DESTDIR}${PREFIX}/bin/dwm ${DESTDIR}${MANPREFIX}/man1/dwm.1 \
+		${DESTDIR}${PREFIX}/xsessions/dwm.desktop
 
 .PHONY: all options clean dist install uninstall
