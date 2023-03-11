@@ -1,7 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=dwm
-Comment=Dynamic window manager
+Comment=dynamic window manager
 Exec=dwm
-Icon=dwm
-Type=XSession
+TryExec=dwm
+Type=Application
+X-LightDM-DesktopName=dwm
+DesktopNames=dwm
+Keywords=tiling;wm;windowmanager;window;manager;
+
